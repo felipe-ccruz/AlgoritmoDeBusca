@@ -9,7 +9,7 @@ public class BFS {
         this.graph = graph;
     }
 
-    //primeiramente precisa determinar qual vai ser o vertice inicial que vai ser visitado
+    // Determina de forma aleatória qual será o vértice inicial a ser visitado
     public Vertex firstVisit() {
         Random random = new Random();
         int first = random.nextInt(graph.getVertices().size());
@@ -17,7 +17,7 @@ public class BFS {
         return graph.getVertices().get(first);
     }
 
-    //o primeiro vertice precisa ser visitado
+    // Adiciona o vértice atual à lista de visitados e enfileira seus adjacentes ainda não visitados
     public void visit(Vertex vertex) {
         for(Vertex v : vertex.getLeaving()){
             if(!visited.contains(v) && !visitLine.contains(v)){
@@ -27,6 +27,7 @@ public class BFS {
         visited.add(vertex);
     }
 
+    // Executa o algoritmo de BFS começando por um vértice inicial escolhido aleatoriamente
     public void run() {
         Vertex first = firstVisit();
         visitLine.add(first);
@@ -38,6 +39,7 @@ public class BFS {
         }
     }
 
+    // Exibe no console a lista de vértices visitados em ordem
     public void showVisited() {
         System.out.println("\n\nVISITED: ");
         System.out.print("[ ");
