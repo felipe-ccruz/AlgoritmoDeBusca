@@ -10,3 +10,4 @@
 | Documentação     | 📚 `:books:`      docs |
 | Correção de bug  | 🐛 `:bug:`        fix  |
 | Ajustes simples  | 🔧 `:wrench:`     chore|
+ 
