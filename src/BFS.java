@@ -31,8 +31,9 @@ public class BFS {
         Vertex first = firstVisit();
         visitLine.add(first);
         while(!visitLine.isEmpty()){
-            Vertex v = visitLine.remove(0);
+            Vertex v = visitLine.get(0);
             visit(v);
+            visitLine.remove(0);
             showVisited();
         }
     }

@@ -14,7 +14,7 @@ public class App {
         graph.printVertexConnections();
 
         // Imprime a conexão de todas as arestas
-        graph.printEdgeConnections();
+        // graph.printEdgeConnections();
 
 
         // Lista de Adjacência
