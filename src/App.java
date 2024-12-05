@@ -1,3 +1,6 @@
+import Graph.Graph;
+import SearchAlgorithms.BFS;
+
 public class App {
     public static void main(String[] args) throws Exception {
          // Criando um grafo com 4 vértices
@@ -10,20 +13,20 @@ public class App {
         // Imprime a matriz de conexão (matriz de adjacência)
         graph.printConnectMat();
 
-        // Imprime a conexão de todos os vértices
-        graph.printVertexConnections();
+        // // Imprime a conexão de todos os vértices
+        // graph.printVertexConnections();
 
-        // Imprime a conexão de todas as arestas
+        // // Imprime a conexão de todas as arestas
         // graph.printEdgeConnections();
 
 
-        // Lista de Adjacência
-        graph.adjacencyList();
+        // // Lista de Adjacência
+        // graph.adjacencyList();
 
-        // Lista de arestas
-        graph.edgeList();
+        // // Lista de arestas
+        // graph.edgeList();
 
-        BFS bfs = new BFS(graph);
-        bfs.run();
-    }
+        BFS bfs = new BFS(graph, "v1", "v2");
+        bfs.showResult();
+        }
 }
