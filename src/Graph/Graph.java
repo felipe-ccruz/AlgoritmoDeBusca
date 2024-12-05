@@ -180,6 +180,12 @@ public class Graph {
             connect(tempEdge, source, target);
         }
     }
+
+    public void graphClean(){
+        for(Vertex v : vertices){
+            v.setPredecessor(null);
+        }
+    }
     
 
     public ArrayList<Vertex> getVertices() {

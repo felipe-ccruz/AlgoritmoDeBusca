@@ -1,5 +1,6 @@
 import Graph.Graph;
 import SearchAlgorithms.BFS;
+import SearchAlgorithms.DFS;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -28,5 +29,12 @@ public class App {
 
         BFS bfs = new BFS(graph, "v1", "v2");
         bfs.showResult();
+
+        graph.graphClean();
+
+        DFS dfs = new DFS(graph, "v1", "v2");
+        dfs.showResult();
+
+        graph.graphClean();
         }
 }

@@ -4,15 +4,15 @@ import Graph.Graph;
 import Graph.Vertex;
 import java.util.ArrayList;
 
-public class BFS {
+public  class DFS {
     Graph graph;
     ArrayList<Vertex> visited = new ArrayList<>();
     ArrayList<Vertex> visitLine = new ArrayList<>();
     ArrayList<Vertex> altWay = new ArrayList<>();
-    public BFS(Graph graph, String initialVertex, String finalVertex) {
-        System.out.println("\n\n\n---------------BFS---------------");
+    public DFS(Graph graph, String initialVertex, String finalVertex) {
+        System.out.println("\n\n\n---------------DFS---------------");
         this.graph = graph;
-        runBFS(initialVertex, finalVertex);
+        runDFS(initialVertex, finalVertex);
         altWay(finalVertex);
     }
 
@@ -25,15 +25,17 @@ public class BFS {
         }
         throw new VertexNotFoundException("Vértice '" + vertex + "' não encontrado.");
     }
-    
 
     //Visita o VERTEX.
     public void visiting(){
-        Vertex v = visitLine.get(0);
+        Vertex v = visitLine.get(visitLine.size() - 1); //ultimo elemento da lista
         System.out.println("\nVisiting: " + v.getName());
+        
+        
+
         investigate(v);
 
-        visitLine.remove(0);
+        visitLine.remove(v);
         visited.add(v);
     }
 
@@ -48,77 +50,75 @@ public class BFS {
     }
 
     //EXECUTE
-    public void runBFS(String initialVertex, String finalVertex) {
+    public void runDFS(String initialVertex, String finalVertex) {
         
         try {
             visitLine.add(searchFor(initialVertex));
             Vertex target = searchFor(finalVertex); //target
             while (!visitLine.isEmpty() && !visited.contains(target)) {
                 visiting();
+                
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        
-        
     }
 
     //Acha um caminho alternativo.
     public void altWay(String finalVertex){
             
-            try {
-                Vertex vertex = searchFor(finalVertex);
-                altWay.add(vertex);
+        try {
+            Vertex vertex = searchFor(finalVertex);
+            altWay.add(vertex);
 
 
-                while (vertex.getPredecessor() != null) {
-                    altWay.add(vertex.getPredecessor());
-                    vertex = vertex.getPredecessor();
-                }
-
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
+            while (vertex.getPredecessor() != null) {
+                altWay.add(vertex.getPredecessor());
+                vertex = vertex.getPredecessor();
             }
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
-    //Tabela de Resultados do BFS
-    public void showResult(){
-        System.out.print("\n\nVISIT LINE: [");
-        for(Vertex v : visitLine){
-            System.out.print(" " + ANSI_CYAN + v.getName() + ANSI_RESET + " ");
-        }
-        System.out.println("]");
-              
-        System.out.print("\n\nBFS RESULT: [");
-        for(Vertex v : visited){
-            System.out.print(" " + ANSI_CYAN + v.getName() + ANSI_RESET + " ");
-        }
-        System.out.println("]");
-
-        System.out.print("\n\nALTERNATIVE WAY: [");
-        for(Vertex v : altWay){
-            System.out.print(" " + ANSI_CYAN + v.getName() + ANSI_RESET + " ");
-        }
-        System.out.println("]");
-
-    }
-
+        //Tabela de Resultados do DFS
+        public void showResult(){
+            System.out.print("\n\nVISIT LINE: [");
+            for(Vertex v : visitLine){
+                System.out.print(" " + ANSI_CYAN + v.getName() + ANSI_RESET + " ");
+            }
+            System.out.println("]");
+                  
+            System.out.print("\n\nDFS RESULT: [");
+            for(Vertex v : visited){
+                System.out.print(" " + ANSI_CYAN + v.getName() + ANSI_RESET + " ");
+            }
+            System.out.println("]");
     
-
+            System.out.print("\n\nALTERNATIVE WAY: [");
+            for(Vertex v : altWay){
+                System.out.print(" " + ANSI_CYAN + v.getName() + ANSI_RESET + " ");
+            }
+            System.out.println("]");
     
-    //GETTER & SETTER
+        }
+
     public Graph getGraph() {
         return graph;
     }
     public void setGraph(Graph graph) {
         this.graph = graph;
     }
+    public ArrayList<Vertex> getVisited() {
+        return visited;
+    }
     public ArrayList<Vertex> getVisitLine() {
         return visitLine;
     }
-    public ArrayList<Vertex> getVisited() {
-        return visited;
-    }   
+    public ArrayList<Vertex> getAltWay() {
+        return altWay;
+    }
 
      // https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 
@@ -140,4 +140,6 @@ public class BFS {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+
 }
