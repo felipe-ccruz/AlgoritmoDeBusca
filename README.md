@@ -4,6 +4,10 @@
 
 `docs` - Commits do tipo docs indicam que houveram mudanças na documentação, como por exemplo no Readme do seu repositório. (Não inclui alterações em código).
 
+`fix` Refere-se à correção de bugs (relacionado ao PATCH no versionamento semântico).
+
+`chore` Usado para ajustes simples ou manutenção que não afetam a lógica do código.
+
 |      Nome       |         Emoji          |
 |------------------|------------------------|
 | Novo recurso     | ✨ `:sparkles:`   feat |

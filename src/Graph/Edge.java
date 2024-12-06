@@ -17,6 +17,7 @@ public class Edge {
         System.out.println("\n\n-----------------------EDGE--" + getName() + "-----------------------");
         System.out.println("- SOURCE: " + source.getName());
         System.out.println("- TARGET: " + target.getName());
+        System.out.println("- WEIGHT: " + weight);
         System.out.println("-------------------------");
     }
 
@@ -37,5 +38,11 @@ public class Edge {
     }
     public void setTarget(Vertex target) {
         this.target = target;
+    }
+    public int getWeight() {
+        return weight;
+    }
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 }

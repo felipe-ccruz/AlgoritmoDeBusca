@@ -5,10 +5,10 @@ import Graph.Vertex;
 import java.util.ArrayList;
 
 public  class DFS {
-    Graph graph;
-    ArrayList<Vertex> visited = new ArrayList<>();
-    ArrayList<Vertex> visitLine = new ArrayList<>();
-    ArrayList<Vertex> altWay = new ArrayList<>();
+    private Graph graph;
+    private ArrayList<Vertex> visited = new ArrayList<>();
+    private ArrayList<Vertex> visitLine = new ArrayList<>();
+    private ArrayList<Vertex> altWay = new ArrayList<>();
     public DFS(Graph graph, String initialVertex, String finalVertex) {
         System.out.println("\n\n\n---------------DFS---------------");
         this.graph = graph;

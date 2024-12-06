@@ -4,17 +4,16 @@ import java.util.Random;
 
 public class Graph {
     private int[][] connections;
+    private ArrayList<Vertex> vertices;
+    private ArrayList<Edge> edges;
     public Graph(int numVertices) {
+        this.vertices = new ArrayList<>();
+        this.edges = new ArrayList<>();
         vertexGenerator(numVertices);
         this.connections = new int[numVertices][numVertices];
         createConnectMat();
-    }
-
-    //ELEMENTS
-    ArrayList<Vertex> vertices = new ArrayList<>();
-    ArrayList<Edge> edges = new ArrayList<>();
-
-
+    }  
+     
     //GENERATOR
     public void edgeGenerator(int numEdges) {
         Random r = new Random();
@@ -71,11 +70,17 @@ public class Graph {
         tempSource.addLeavingVertex(tempTarget);
         tempTarget.addEnteringVertex(tempSource);
 
+
         edge.setSource(tempSource);
         edge.setTarget(tempTarget);
 
+        tempSource.addEdge(edge);
+
+        System.out.println("Conexão criada: " + tempSource.getName() + " -> " + tempTarget.getName());
+
         connections[vertices.indexOf(tempSource)][vertices.indexOf(tempTarget)] = connections[vertices.indexOf(tempSource)][vertices.indexOf(tempTarget)] + 1;
     }
+
 
     public void printVertexConnections(){
         for(Vertex v : vertices){
@@ -87,7 +92,7 @@ public class Graph {
         for(Edge e : edges){
             e.printStatus();
         }
-    }
+    }    
 
 
     //"IS" FUCTIONS
@@ -171,6 +176,7 @@ public class Graph {
 
         edgeGenerator(numConnections);
 
+        System.out.println();
         for(int i = 0; i < numConnections; i++){
             int source = random.nextInt(vertices.size()) + 1;
             int target = random.nextInt(vertices.size()) + 1;
@@ -179,11 +185,15 @@ public class Graph {
 
             connect(tempEdge, source, target);
         }
+        System.out.println();
+
     }
 
+    //CLEAN
     public void graphClean(){
         for(Vertex v : vertices){
             v.setPredecessor(null);
+            v.setSmalDistance(0);
         }
     }
     
